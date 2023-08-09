@@ -80,7 +80,7 @@ public class UIManager : Singleton<UIManager>
             {
                 GameObject itemObject = Instantiate(itemInputPrefab, transform.position, transform.rotation) as GameObject;
                 itemObject.transform.SetParent(itemInputContainer, false);
-                itemObject.GetComponent<Image>().sprite = data.ItemIcon;
+                itemObject.GetComponentsInChildren<Image>(true)[1].sprite = data.ItemIcon;
 
                 EventTrigger.Entry mouseEnterEvent = new EventTrigger.Entry();
                 mouseEnterEvent.eventID = EventTriggerType.PointerEnter;
@@ -92,13 +92,13 @@ public class UIManager : Singleton<UIManager>
                 mouseExitEvent.callback.AddListener((abc1) => {MouseExitMethod(); });
                 itemObject.GetComponent<EventTrigger>().triggers.Add(mouseExitEvent);
 
-                itemObject.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => PlusButton(data.ItemName, itemObject.GetComponentInChildren<TMP_InputField>()));
-                itemObject.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => MinusButton(data.ItemName, itemObject.GetComponentInChildren<TMP_InputField>()));
-                itemObject.GetComponentInChildren<TMP_InputField>().onEndEdit.AddListener((abc2) => NumberInputField(data.ItemName, itemObject.GetComponentInChildren<TMP_InputField>()));
+                itemObject.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => PlusButton(data.ItemName, itemObject.GetComponentInChildren<TMP_InputField>(), itemObject.GetComponentsInChildren<Image>(true)[0]));
+                itemObject.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => MinusButton(data.ItemName, itemObject.GetComponentInChildren<TMP_InputField>(), itemObject.GetComponentsInChildren<Image>(true)[0]));
+                itemObject.GetComponentInChildren<TMP_InputField>().onEndEdit.AddListener((abc2) => NumberInputField(data.ItemName, itemObject.GetComponentInChildren<TMP_InputField>(), itemObject.GetComponentsInChildren<Image>(true)[0]));
             }
         }
     }
-    private void PlusButton(string itemName, TMP_InputField inputField)
+    private void PlusButton(string itemName, TMP_InputField inputField, Image highlightImage)
     {
         GameManager.Instance.recyclerItems[itemName] += 1;
         if(GameManager.Instance.recyclerItems[itemName] > 999)
@@ -106,25 +106,37 @@ public class UIManager : Singleton<UIManager>
             GameManager.Instance.recyclerItems[itemName] = 999;
         }
         inputField.text = GameManager.Instance.recyclerItems[itemName].ToString();
+        highlightImage.gameObject.SetActive(true);
 
         UpdateRecyclerResultBox();
     }
-    private void MinusButton(string itemName, TMP_InputField inputField)
+    private void MinusButton(string itemName, TMP_InputField inputField, Image highlightImage)
     {
         GameManager.Instance.recyclerItems[itemName] -= 1;
         if(GameManager.Instance.recyclerItems[itemName] < 0)
         {
             GameManager.Instance.recyclerItems[itemName] = 0;
         }
+        if(GameManager.Instance.recyclerItems[itemName] > 0)
+        {
+            highlightImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            highlightImage.gameObject.SetActive(false);
+        }
         inputField.text = GameManager.Instance.recyclerItems[itemName].ToString();
 
         UpdateRecyclerResultBox();
     }
-    private void NumberInputField(string itemName, TMP_InputField inputField)
+    private void NumberInputField(string itemName, TMP_InputField inputField, Image highlightImage)
     {
         if(inputField.text.Equals(""))
         {
-            inputField.text = "0";
+            GameManager.Instance.recyclerItems[itemName] = 0;
+            inputField.text = GameManager.Instance.recyclerItems[itemName].ToString();
+            highlightImage.gameObject.SetActive(false);
+            UpdateRecyclerResultBox();
             return;
         }
 
@@ -134,6 +146,14 @@ public class UIManager : Singleton<UIManager>
         if(inputFieldNumber < 0)
         {
             GameManager.Instance.recyclerItems[itemName] = 0;
+        }
+        if(inputFieldNumber > 0)
+        {
+            highlightImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            highlightImage.gameObject.SetActive(false);
         }
 
         inputField.text = GameManager.Instance.recyclerItems[itemName].ToString();
@@ -206,7 +226,12 @@ public class UIManager : Singleton<UIManager>
     }
     public void UpdateRecyclerResultBox()
     {
-        Debug.Log("----------------------");
+        int resultFabric = 0;
+        int resultFrags = 0;
+        int resultHQMetal = 0;
+        int resultRope = 0;
+        int resultScrap = 0;
+        int resultTechTrash = 0;
         foreach(string key in GameManager.Instance.recyclerItems.Keys.ToArray())
         {
             if(GameManager.Instance.recyclerItems[key] > 0)
@@ -215,10 +240,93 @@ public class UIManager : Singleton<UIManager>
                 {
                     if(data.ItemName.Equals(key))
                     {
-                        Debug.Log(data.RecycledFabric*GameManager.Instance.recyclerItems[key] +" "+ data.RecycledFrags*GameManager.Instance.recyclerItems[key] +" "+ data.RecycledHQMetal*GameManager.Instance.recyclerItems[key] +" "+ data.RecycledRope*GameManager.Instance.recyclerItems[key] +" "+ data.RecycledScrap*GameManager.Instance.recyclerItems[key] +" "+ data.RecycledTechTrash*GameManager.Instance.recyclerItems[key]);
+                        resultFabric += data.RecycledFabric * GameManager.Instance.recyclerItems[key];
+                        resultFrags += data.RecycledFrags * GameManager.Instance.recyclerItems[key];
+                        resultHQMetal += data.RecycledHQMetal * GameManager.Instance.recyclerItems[key];
+                        if(GameManager.Instance.recycleAll)
+                        {
+                            resultFabric += data.RecycledRope * GameManager.Instance.recyclerItems[key] * 15;
+                        }
+                        else
+                        {
+                            resultRope += data.RecycledRope * GameManager.Instance.recyclerItems[key];
+                        }
+                        resultScrap += data.RecycledScrap * GameManager.Instance.recyclerItems[key];
+                        if(GameManager.Instance.recycleAll)
+                        {
+                            resultScrap += data.RecycledTechTrash * GameManager.Instance.recyclerItems[key] * 20;
+                            resultHQMetal += data.RecycledTechTrash * GameManager.Instance.recyclerItems[key] * 1;
+                        }
+                        else
+                        {
+                            resultTechTrash += data.RecycledTechTrash * GameManager.Instance.recyclerItems[key];
+                        }
                     }
                 }
             }
+        }
+
+        outputHintText.SetActive(false);
+        foreach(GameObject recyclerOutput in recyclerOutputs.Values)
+        {
+            recyclerOutput.SetActive(false);
+        }
+        if(resultFabric > 0)
+        {
+            recyclerOutputs["Kangas"].SetActive(true);
+            recyclerOutputs["Kangas"].GetComponentInChildren<TMP_Text>(true).text = resultFabric.ToString();
+        }
+        if(resultFrags > 0)
+        {
+            recyclerOutputs["Metallinpalasia"].SetActive(true);
+            recyclerOutputs["Metallinpalasia"].GetComponentInChildren<TMP_Text>(true).text = resultFrags.ToString();
+        }
+        if(resultHQMetal > 0)
+        {
+            recyclerOutputs["Korkealaatuinen metalli"].SetActive(true);
+            recyclerOutputs["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text = resultHQMetal.ToString();
+        }
+        if(resultRope > 0)
+        {
+            if(GameManager.Instance.recycleAll == true)
+            {
+                recyclerOutputs["Kangas"].SetActive(true);
+                int.TryParse(recyclerOutputs["Kangas"].GetComponentInChildren<TMP_Text>(true).text, out int fabricNumber);
+                recyclerOutputs["Kangas"].GetComponentInChildren<TMP_Text>(true).text = (fabricNumber + (resultRope * 15)).ToString();
+            }
+            else
+            {
+                recyclerOutputs["Köysi"].SetActive(true);
+                recyclerOutputs["Köysi"].GetComponentInChildren<TMP_Text>(true).text = resultRope.ToString();
+            }
+        }
+        if(resultScrap > 0)
+        {
+            recyclerOutputs["Romu"].SetActive(true);
+            recyclerOutputs["Romu"].GetComponentInChildren<TMP_Text>(true).text = resultScrap.ToString();
+        }
+        if(resultTechTrash > 0)
+        {
+            if(GameManager.Instance.recycleAll == true)
+            {
+                recyclerOutputs["Romu"].GetComponentInChildren<TMP_Text>(true).text = "0";
+                recyclerOutputs["Romu"].SetActive(true);
+                int.TryParse(recyclerOutputs["Romu"].GetComponentInChildren<TMP_Text>(true).text, out int scrapNumber);
+                recyclerOutputs["Romu"].GetComponentInChildren<TMP_Text>(true).text = (scrapNumber + (resultTechTrash * 20)).ToString();
+                recyclerOutputs["Korkealaatuinen metalli"].SetActive(true);
+                int.TryParse(recyclerOutputs["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text, out int hqMetalNumber);
+                recyclerOutputs["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text = (hqMetalNumber + (resultTechTrash * 1)).ToString();
+            }
+            else
+            {
+                recyclerOutputs["Tekniikkaromu"].SetActive(true);
+                recyclerOutputs["Tekniikkaromu"].GetComponentInChildren<TMP_Text>(true).text = resultTechTrash.ToString();
+            }
+        }
+
+        if(resultFabric == 0 && resultFrags == 0 && resultHQMetal == 0 && resultRope == 0 && resultScrap == 0 && resultTechTrash == 0)
+        {
+            outputHintText.SetActive(true);
         }
     }
 
@@ -233,6 +341,14 @@ public class UIManager : Singleton<UIManager>
         {
             inputField.text = "0";
         }
+        foreach(Image image in itemInputContainer.GetComponentsInChildren<Image>(true).Skip(1))
+        {
+            if(image.name.Contains("Highlight"))
+            {
+                image.gameObject.SetActive(false);
+            }
+        }
+        UpdateRecyclerResultBox();
     }
     public void ToggleRecycleAll()
     {
@@ -260,6 +376,7 @@ public class UIManager : Singleton<UIManager>
             recycleAllToggleButton.colors = colors;
             PlayerPrefs.SetInt("RecycleAll", 1);
         }
+        UpdateRecyclerResultBox();
     }
 
 
