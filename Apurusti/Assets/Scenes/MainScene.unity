@@ -43,7 +43,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -98,7 +98,8 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 64c11f5b5edeab749a5a3ecff5b9e0fc,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -118,6 +119,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
@@ -149,6 +152,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 848723583}
   m_RootOrder: 0
@@ -173,6 +177,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -283,6 +288,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1172325350}
   m_RootOrder: 0
@@ -307,6 +313,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -415,6 +422,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 768363076}
   m_Father: {fileID: 1079917120}
@@ -454,6 +462,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1384398098}
   m_RootOrder: 1
@@ -478,6 +487,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.29411766, g: 0.31764707, b: 0.2509804, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -551,6 +561,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -568,11 +579,191 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Items:
-  - ItemName: Romu
-    ItemIcon: {fileID: 21300000, guid: dd52af7c065ac144697eb3db8121d896, type: 3}
-    IsRecyclable: 0
+  - ItemName: Kohdistustietokone
+    ItemIcon: {fileID: 21300000, guid: 9c3d16a375d092a44b95462ffd22f573, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 0
+    RecycledFrags: 50
+    RecycledTechTrash: 3
+    RecycledHQMetal: 1
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: "MLRS-t\xE4ht\xE4ysmoduuli"
+    ItemIcon: {fileID: 21300000, guid: 4d198f92303c6c1438a0e30f13e104c8, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 0
+    RecycledFrags: 50
+    RecycledTechTrash: 2
+    RecycledHQMetal: 0
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: Valvontakamera
+    ItemIcon: {fileID: 21300000, guid: 8894f57150cc8a74494789dfc1861320, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 0
+    RecycledFrags: 0
+    RecycledTechTrash: 2
+    RecycledHQMetal: 2
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: "Kiv\xE4\xE4rinrunko"
+    ItemIcon: {fileID: 21300000, guid: 376c8213c76fd55469f7767d0bcc2ab0, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 25
+    RecycledFrags: 0
+    RecycledTechTrash: 0
+    RecycledHQMetal: 2
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: Tekniikkaromu
+    ItemIcon: {fileID: 21300000, guid: 371fb2bab210c08458be6ca09f0af87e, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 1
+    RecycledScrap: 20
+    RecycledFrags: 0
+    RecycledTechTrash: 0
+    RecycledHQMetal: 1
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: Sulake
+    ItemIcon: {fileID: 21300000, guid: f780027fb995895439c1efed31a76e34, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 20
+    RecycledFrags: 0
+    RecycledTechTrash: 0
+    RecycledHQMetal: 0
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: Puoliautomaattirunko
+    ItemIcon: {fileID: 21300000, guid: 9e765af481cc48a4e98ffc1a4a26cf7b, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 15
+    RecycledFrags: 75
+    RecycledTechTrash: 0
+    RecycledHQMetal: 2
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: Konepistoolirunko
+    ItemIcon: {fileID: 21300000, guid: 5fb45d75eb4dda7448d8ba39bab6477e, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 15
+    RecycledFrags: 0
+    RecycledTechTrash: 0
+    RecycledHQMetal: 2
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: Metallijousi
+    ItemIcon: {fileID: 21300000, guid: b8c335b1638f26140b1255a6445e3442, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 10
+    RecycledFrags: 0
+    RecycledTechTrash: 0
+    RecycledHQMetal: 1
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: Rattaita
+    ItemIcon: {fileID: 21300000, guid: 625e3bfe53c163d43adba31a2abf9543, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 10
+    RecycledFrags: 13
+    RecycledTechTrash: 0
+    RecycledHQMetal: 0
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: "Pelti\xE4"
+    ItemIcon: {fileID: 21300000, guid: c5161307770f2a94190f4b9e1a2320e5, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 8
+    RecycledFrags: 100
+    RecycledTechTrash: 0
+    RecycledHQMetal: 1
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: "Liikennemerkkej\xE4"
+    ItemIcon: {fileID: 21300000, guid: 93d30070de8036a4b95b0728185ce292, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 5
+    RecycledFrags: 0
+    RecycledTechTrash: 0
+    RecycledHQMetal: 1
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: Metalliputki
+    ItemIcon: {fileID: 21300000, guid: 8bde89d49b5e74044bccb34cab54887f, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 5
+    RecycledFrags: 0
+    RecycledTechTrash: 0
+    RecycledHQMetal: 1
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: "Metalliter\xE4"
+    ItemIcon: {fileID: 21300000, guid: d1318a3160a0d6e4c925b5419036ed5c, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 2
+    RecycledFrags: 15
+    RecycledTechTrash: 0
+    RecycledHQMetal: 0
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: "Tyhj\xE4 propaanis\xE4ili\xF6"
+    ItemIcon: {fileID: 21300000, guid: 69b6968dc859bf348a740f562e214074, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 1
+    RecycledFrags: 50
+    RecycledTechTrash: 0
+    RecycledHQMetal: 0
+    RecycledRope: 0
+    RecycledFabric: 0
+  - ItemName: Pressu
+    ItemIcon: {fileID: 21300000, guid: cd94d79185695ec4b8afc2f457527324, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 0
+    RecycledFrags: 0
+    RecycledTechTrash: 0
+    RecycledHQMetal: 0
+    RecycledRope: 0
+    RecycledFabric: 50
+  - ItemName: Ompelupakkaus
+    ItemIcon: {fileID: 21300000, guid: 6c2d3003127e4aa439dbdd4e3e3a96d6, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 0
+    RecycledScrap: 0
+    RecycledFrags: 0
+    RecycledTechTrash: 0
+    RecycledHQMetal: 0
+    RecycledRope: 2
+    RecycledFabric: 10
+  - ItemName: "K\xF6ysi"
+    ItemIcon: {fileID: 21300000, guid: 9dcaedb7d9a09e047acb7dbe81c4787d, type: 3}
+    IsRecyclable: 1
     RecyclableResult: 1
     RecycledScrap: 0
+    RecycledFrags: 0
+    RecycledTechTrash: 0
+    RecycledHQMetal: 0
+    RecycledRope: 0
+    RecycledFabric: 15
+  - ItemName: Romu
+    ItemIcon: {fileID: 21300000, guid: dd52af7c065ac144697eb3db8121d896, type: 3}
+    IsRecyclable: 1
+    RecyclableResult: 1
+    RecycledScrap: 1
     RecycledFrags: 0
     RecycledTechTrash: 0
     RecycledHQMetal: 0
@@ -608,186 +799,6 @@ MonoBehaviour:
     RecycledHQMetal: 0
     RecycledRope: 0
     RecycledFabric: 0
-  - ItemName: "K\xF6ysi"
-    ItemIcon: {fileID: 21300000, guid: 9dcaedb7d9a09e047acb7dbe81c4787d, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 1
-    RecycledScrap: 0
-    RecycledFrags: 0
-    RecycledTechTrash: 0
-    RecycledHQMetal: 0
-    RecycledRope: 0
-    RecycledFabric: 15
-  - ItemName: "Kiv\xE4\xE4rinrunko"
-    ItemIcon: {fileID: 21300000, guid: 376c8213c76fd55469f7767d0bcc2ab0, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 25
-    RecycledFrags: 0
-    RecycledTechTrash: 0
-    RecycledHQMetal: 2
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: Kohdistustietokone
-    ItemIcon: {fileID: 21300000, guid: 9c3d16a375d092a44b95462ffd22f573, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 0
-    RecycledFrags: 50
-    RecycledTechTrash: 3
-    RecycledHQMetal: 1
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: Konepistoolirunko
-    ItemIcon: {fileID: 21300000, guid: 5fb45d75eb4dda7448d8ba39bab6477e, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 15
-    RecycledFrags: 0
-    RecycledTechTrash: 0
-    RecycledHQMetal: 2
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: "Liikennemerkkej\xE4"
-    ItemIcon: {fileID: 21300000, guid: 93d30070de8036a4b95b0728185ce292, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 5
-    RecycledFrags: 0
-    RecycledTechTrash: 0
-    RecycledHQMetal: 1
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: Metallijousi
-    ItemIcon: {fileID: 21300000, guid: b8c335b1638f26140b1255a6445e3442, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 10
-    RecycledFrags: 0
-    RecycledTechTrash: 0
-    RecycledHQMetal: 1
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: Metalliputki
-    ItemIcon: {fileID: 21300000, guid: 8bde89d49b5e74044bccb34cab54887f, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 5
-    RecycledFrags: 0
-    RecycledTechTrash: 0
-    RecycledHQMetal: 1
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: "Metalliter\xE4"
-    ItemIcon: {fileID: 21300000, guid: d1318a3160a0d6e4c925b5419036ed5c, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 2
-    RecycledFrags: 15
-    RecycledTechTrash: 0
-    RecycledHQMetal: 0
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: "MLRS-t\xE4ht\xE4ysmoduuli"
-    ItemIcon: {fileID: 21300000, guid: 4d198f92303c6c1438a0e30f13e104c8, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 0
-    RecycledFrags: 50
-    RecycledTechTrash: 2
-    RecycledHQMetal: 0
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: Ompelupakkaus
-    ItemIcon: {fileID: 21300000, guid: 6c2d3003127e4aa439dbdd4e3e3a96d6, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 0
-    RecycledFrags: 0
-    RecycledTechTrash: 0
-    RecycledHQMetal: 0
-    RecycledRope: 2
-    RecycledFabric: 10
-  - ItemName: "Pelti\xE4"
-    ItemIcon: {fileID: 21300000, guid: c5161307770f2a94190f4b9e1a2320e5, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 8
-    RecycledFrags: 100
-    RecycledTechTrash: 0
-    RecycledHQMetal: 1
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: Pressu
-    ItemIcon: {fileID: 21300000, guid: cd94d79185695ec4b8afc2f457527324, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 0
-    RecycledFrags: 0
-    RecycledTechTrash: 0
-    RecycledHQMetal: 0
-    RecycledRope: 0
-    RecycledFabric: 50
-  - ItemName: Puoliautomaattirunko
-    ItemIcon: {fileID: 21300000, guid: 9e765af481cc48a4e98ffc1a4a26cf7b, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 15
-    RecycledFrags: 75
-    RecycledTechTrash: 0
-    RecycledHQMetal: 2
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: Rattaita
-    ItemIcon: {fileID: 21300000, guid: 625e3bfe53c163d43adba31a2abf9543, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 10
-    RecycledFrags: 13
-    RecycledTechTrash: 0
-    RecycledHQMetal: 0
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: Sulake
-    ItemIcon: {fileID: 21300000, guid: f780027fb995895439c1efed31a76e34, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 20
-    RecycledFrags: 0
-    RecycledTechTrash: 0
-    RecycledHQMetal: 0
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: Tekniikkaromu
-    ItemIcon: {fileID: 21300000, guid: 371fb2bab210c08458be6ca09f0af87e, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 1
-    RecycledScrap: 20
-    RecycledFrags: 0
-    RecycledTechTrash: 0
-    RecycledHQMetal: 1
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: "Tyhj\xE4 propaanis\xE4ili\xF6"
-    ItemIcon: {fileID: 21300000, guid: 69b6968dc859bf348a740f562e214074, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 1
-    RecycledFrags: 50
-    RecycledTechTrash: 0
-    RecycledHQMetal: 0
-    RecycledRope: 0
-    RecycledFabric: 0
-  - ItemName: Valvontakamera
-    ItemIcon: {fileID: 21300000, guid: 8894f57150cc8a74494789dfc1861320, type: 3}
-    IsRecyclable: 1
-    RecyclableResult: 0
-    RecycledScrap: 0
-    RecycledFrags: 0
-    RecycledTechTrash: 2
-    RecycledHQMetal: 2
-    RecycledRope: 0
-    RecycledFabric: 0
 --- !u!1 &496622703
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,6 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -850,6 +862,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -882,6 +895,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1384398098}
   m_RootOrder: 3
@@ -906,6 +920,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1016,6 +1031,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 156409580}
   m_RootOrder: 0
@@ -1040,6 +1056,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.112965524, g: 0.156, b: 0.1506207, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1090,6 +1107,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 45644652}
   - {fileID: 1055002300}
@@ -1116,6 +1134,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19778572, g: 0.213, b: 0.16735715, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1165,6 +1184,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1079917120}
   m_Father: {fileID: 0}
@@ -1223,6 +1243,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2125816495}
   m_Father: {fileID: 1534624760}
@@ -1247,6 +1268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 0
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1277,6 +1299,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1009009066}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ResetRecyclables
         m_Mode: 1
         m_Arguments:
@@ -1302,6 +1325,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1351,6 +1375,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1534624760}
   - {fileID: 1384398098}
@@ -1387,6 +1412,7 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1079917116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,6 +1471,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1079917119
 Canvas:
   m_ObjectHideFlags: 0
@@ -1462,6 +1489,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1476,6 +1504,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 156409580}
   - {fileID: 848723583}
@@ -1516,6 +1545,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 85128523}
   m_Father: {fileID: 1534624760}
@@ -1540,6 +1570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 0
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1570,6 +1601,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1009009066}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ToggleRecycleAll
         m_Mode: 1
         m_Arguments:
@@ -1595,6 +1627,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1645,6 +1678,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1384398098}
   m_RootOrder: 0
@@ -1669,6 +1703,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1778,6 +1813,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1219864923}
   - {fileID: 272810483}
@@ -1829,6 +1865,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1534624760}
   m_RootOrder: 0
@@ -1853,6 +1890,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1961,6 +1999,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1457859505}
   - {fileID: 1020386525}
@@ -2003,6 +2042,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1384398098}
   m_RootOrder: 4
@@ -2027,6 +2067,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.29411766, g: 0.31764707, b: 0.2509804, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2101,6 +2142,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1384398098}
   m_RootOrder: 2
@@ -2125,6 +2167,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2237,6 +2280,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1534624760}
   m_RootOrder: 3
@@ -2261,6 +2305,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.29986, g: 0.319, b: 0.2552, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2335,6 +2380,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1384398098}
   m_RootOrder: 5
@@ -2359,6 +2405,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2470,6 +2517,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1020386525}
   m_RootOrder: 0
@@ -2494,6 +2542,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

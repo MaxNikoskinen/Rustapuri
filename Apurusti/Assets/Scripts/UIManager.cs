@@ -101,9 +101,9 @@ public class UIManager : Singleton<UIManager>
     private void PlusButton(string itemName, TMP_InputField inputField, Image highlightImage)
     {
         GameManager.Instance.recyclerItems[itemName] += 1;
-        if(GameManager.Instance.recyclerItems[itemName] > 999)
+        if(GameManager.Instance.recyclerItems[itemName] > 99999)
         {
-            GameManager.Instance.recyclerItems[itemName] = 999;
+            GameManager.Instance.recyclerItems[itemName] = 99999;
         }
         inputField.text = GameManager.Instance.recyclerItems[itemName].ToString();
         highlightImage.gameObject.SetActive(true);
