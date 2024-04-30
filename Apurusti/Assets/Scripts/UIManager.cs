@@ -358,17 +358,17 @@ public class UIManager : Singleton<UIManager>
         if(resultFabric > 0)
         {
             recyclerOutputs["Kangas"].SetActive(true);
-            recyclerOutputs["Kangas"].GetComponentInChildren<TMP_Text>(true).text = resultFabric.ToString();
+            recyclerOutputs["Kangas"].GetComponentInChildren<TMP_Text>(true).text = ((int)resultFabric).ToString();
         }
         if(resultFrags > 0)
         {
             recyclerOutputs["Metallinpalasia"].SetActive(true);
-            recyclerOutputs["Metallinpalasia"].GetComponentInChildren<TMP_Text>(true).text = resultFrags.ToString();
+            recyclerOutputs["Metallinpalasia"].GetComponentInChildren<TMP_Text>(true).text = ((int)resultFrags).ToString();
         }
         if(resultHQMetal > 0)
         {
             recyclerOutputs["Korkealaatuinen metalli"].SetActive(true);
-            recyclerOutputs["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text = resultHQMetal.ToString();
+            recyclerOutputs["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text = ((int)resultHQMetal).ToString();
         }
         if(resultRope > 0)
         {
@@ -376,18 +376,18 @@ public class UIManager : Singleton<UIManager>
             {
                 recyclerOutputs["Kangas"].SetActive(true);
                 int.TryParse(recyclerOutputs["Kangas"].GetComponentInChildren<TMP_Text>(true).text, out int fabricNumber);
-                recyclerOutputs["Kangas"].GetComponentInChildren<TMP_Text>(true).text = (fabricNumber + (resultRope * 15)).ToString();
+                recyclerOutputs["Kangas"].GetComponentInChildren<TMP_Text>(true).text = ((int)(fabricNumber + (resultRope * 15))).ToString();
             }
             else
             {
                 recyclerOutputs["Köysi"].SetActive(true);
-                recyclerOutputs["Köysi"].GetComponentInChildren<TMP_Text>(true).text = resultRope.ToString();
+                recyclerOutputs["Köysi"].GetComponentInChildren<TMP_Text>(true).text = ((int)resultRope).ToString();
             }
         }
         if(resultScrap > 0)
         {
             recyclerOutputs["Romu"].SetActive(true);
-            recyclerOutputs["Romu"].GetComponentInChildren<TMP_Text>(true).text = resultScrap.ToString();
+            recyclerOutputs["Romu"].GetComponentInChildren<TMP_Text>(true).text = ((int)resultScrap).ToString();
         }
         if(resultTechTrash > 0)
         {
@@ -396,15 +396,15 @@ public class UIManager : Singleton<UIManager>
                 recyclerOutputs["Romu"].GetComponentInChildren<TMP_Text>(true).text = "0";
                 recyclerOutputs["Romu"].SetActive(true);
                 int.TryParse(recyclerOutputs["Romu"].GetComponentInChildren<TMP_Text>(true).text, out int scrapNumber);
-                recyclerOutputs["Romu"].GetComponentInChildren<TMP_Text>(true).text = (scrapNumber + (resultTechTrash * 20)).ToString();
+                recyclerOutputs["Romu"].GetComponentInChildren<TMP_Text>(true).text = ((int)(scrapNumber + (resultTechTrash * 20))).ToString();
                 recyclerOutputs["Korkealaatuinen metalli"].SetActive(true);
                 int.TryParse(recyclerOutputs["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text, out int hqMetalNumber);
-                recyclerOutputs["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text = (hqMetalNumber + (resultTechTrash * 1)).ToString();
+                recyclerOutputs["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text = ((int)(hqMetalNumber + (resultTechTrash * 1))).ToString();
             }
             else
             {
                 recyclerOutputs["Tekniikkaromu"].SetActive(true);
-                recyclerOutputs["Tekniikkaromu"].GetComponentInChildren<TMP_Text>(true).text = resultTechTrash.ToString();
+                recyclerOutputs["Tekniikkaromu"].GetComponentInChildren<TMP_Text>(true).text = ((int)resultTechTrash).ToString();
             }
         }
 
