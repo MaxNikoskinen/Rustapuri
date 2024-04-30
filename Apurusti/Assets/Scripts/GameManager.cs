@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
         public Sprite ItemIcon;
         public bool IsRecyclable = true;
         public bool RecyclableResult = false;
+        public bool DontMultiplyResult = false;
         public int RecycledScrap;
         public int RecycledFrags;
         public int RecycledTechTrash;
@@ -24,6 +25,8 @@ public class GameManager : Singleton<GameManager>
     public Dictionary<string, int> recyclerItems = new Dictionary<string, int>();
 
     [System.NonSerialized] public bool recycleAll = true;
+
+    [System.NonSerialized] public float resultMultiplier = 1.0f;
 
     private void Start()
     {
