@@ -443,7 +443,7 @@ public class UIManager : Singleton<UIManager>
             colors.normalColor = new Color(0.55f, 0.25f, 0.25f);
             colors.highlightedColor = new Color(0.80f, 0.45f, 0.45f);
             colors.pressedColor = new Color(0.90f, 0.60f, 0.60f);
-            recycleAllToggleButton.GetComponentInChildren<TMP_Text>().text = "Kierrätä vain syötetyt tavarat";
+            recycleAllToggleButton.GetComponentInChildren<TMP_Text>().text = "Ei";
             recycleAllToggleButton.GetComponentInChildren<TMP_Text>().color = new Color(1.00f, 0.80f, 0.80f);
             recycleAllToggleButton.colors = colors;
             PlayerPrefs.SetInt("RecycleAll", 0);
@@ -455,7 +455,7 @@ public class UIManager : Singleton<UIManager>
             colors.normalColor = new Color(0.25f, 0.55f, 0.25f);
             colors.highlightedColor = new Color(0.45f, 0.80f, 0.45f);
             colors.pressedColor = new Color(0.60f, 0.90f, 0.60f);
-            recycleAllToggleButton.GetComponentInChildren<TMP_Text>().text = "Kierrätä myös kierrättimestä saadut tavarat";
+            recycleAllToggleButton.GetComponentInChildren<TMP_Text>().text = "Kyllä";
             recycleAllToggleButton.GetComponentInChildren<TMP_Text>().color = new Color(0.80f, 1.00f, 0.80f);
             recycleAllToggleButton.colors = colors;
             PlayerPrefs.SetInt("RecycleAll", 1);

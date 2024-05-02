@@ -26,7 +26,11 @@ public class GameManager : Singleton<GameManager>
 
     [System.NonSerialized] public bool recycleAll = true;
 
-    [System.NonSerialized] public float resultMultiplier = 1.0f;
+    [System.NonSerialized] public float resultMultiplier = 1.2f;
+
+    [System.NonSerialized] public int multiplierSettingIndex = 1; //0=vanha,1=monumentti,2=turva-alue,3=oma
+
+    [System.NonSerialized] public float customMultiplier = 1.0f;
 
     private void Start()
     {
