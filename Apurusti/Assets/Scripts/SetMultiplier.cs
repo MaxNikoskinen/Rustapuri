@@ -12,11 +12,15 @@ public class SetMultiplier : MonoBehaviour
     [SerializeField] private TMP_Text multiplierText;
 
     [SerializeField] private TMP_InputField customMultiplierOldInputField;
+    [SerializeField] private TMP_InputField customMultiplierNewInputField;
 
     private void Start()
     {
         SetMultiplierValue(PlayerPrefs.GetInt("MultiplierSettingIndex", 1));
         tekstiOma.text = $"Oma (x{GameManager.Instance.customMultiplier.ToString("F2")}) [x{(GameManager.Instance.customMultiplier / 2).ToString("F2")}]";
+        GameManager.Instance.customMultiplier = PlayerPrefs.GetFloat("CustomMultiplier", 1.00f);
+        customMultiplierOldInputField.text = GameManager.Instance.customMultiplier.ToString("F2");
+        SetCustomMultiplierButton();
     }
 
     public void SetMultiplierValue(int index)
@@ -81,6 +85,13 @@ public class SetMultiplier : MonoBehaviour
 
 
 
+    public void OpenCustomSetValueMenu()
+    {
+        customMultiplierOldInputField.text = GameManager.Instance.customMultiplier.ToString("F2");
+        customMultiplierNewInputField.text = (GameManager.Instance.customMultiplier / 2).ToString("F2");
+    }
+
+
 
     public void SetCustomMultiplierButton()
     {
@@ -88,5 +99,49 @@ public class SetMultiplier : MonoBehaviour
         GameManager.Instance.customMultiplier = newMultiplier;
         SetMultiplierValue(GameManager.Instance.multiplierSettingIndex);
         tekstiOma.text = $"Oma (x{GameManager.Instance.customMultiplier.ToString("F2")}) [x{(GameManager.Instance.customMultiplier / 2).ToString("F2")}]";
+        PlayerPrefs.SetFloat("CustomMultiplier", GameManager.Instance.customMultiplier);
+    }
+
+
+    float outValueFromOldInput;
+    public void EndEditOldInputField()
+    {
+        if(customMultiplierOldInputField.text.Equals(""))
+        {
+            customMultiplierOldInputField.text = 1.00f.ToString();
+        }
+
+        float.TryParse(customMultiplierOldInputField.text, out outValueFromOldInput);
+        if(outValueFromOldInput < 0.02)
+        {
+            outValueFromOldInput = 0.02f;
+        }
+        else if(outValueFromOldInput > 100)
+        {
+            outValueFromOldInput = 100.00f;
+        }
+        customMultiplierNewInputField.text = (outValueFromOldInput / 2).ToString("F2");
+        customMultiplierOldInputField.text = outValueFromOldInput.ToString("F2");
+    }
+
+    float outValueFromNewInput;
+    public void EndEditNewInputField()
+    {
+        if(customMultiplierNewInputField.text.Equals(""))
+        {
+            customMultiplierNewInputField.text = 0.50f.ToString();
+        }
+
+        float.TryParse(customMultiplierNewInputField.text, out outValueFromNewInput);
+        if(outValueFromNewInput < 0.01)
+        {
+            outValueFromNewInput = 0.01f;
+        }
+        else if(outValueFromNewInput > 100)
+        {
+            outValueFromNewInput = 50.00f;
+        }
+        customMultiplierOldInputField.text = (outValueFromNewInput * 2).ToString("F2");
+        customMultiplierNewInputField.text = outValueFromNewInput.ToString("F2");
     }
 }
