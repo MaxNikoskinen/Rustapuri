@@ -11,7 +11,7 @@ public class SettingAlwaysOnTop : MonoBehaviour
     private static extern IntPtr GetActiveWindow();
 
     [DllImport("user32.dll")]
-    public static extern long GetWindowRect(IntPtr hWnd, ref Rect lpRect);
+    public static extern long GetWindowRect(IntPtr hWnd, ref RectInt lpRect);
 
     [DllImport("user32.dll", SetLastError = true)]
     static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
@@ -27,12 +27,10 @@ public class SettingAlwaysOnTop : MonoBehaviour
 
         if(value) //päällä
         {
-            Rect rect = new Rect();
+            RectInt rect = new RectInt();
             GetWindowRect(hWnd, ref rect);
-            rect.width = rect.width - rect.x;
-            rect.height = rect.height - rect.y;
             Debug.Log($"x:{rect.x} y:{rect.y} h:{rect.width} w:{rect.height}");
-            SetWindowPos(hWnd, HWND_TOPMOST, (int)rect.x, (int)rect.y, (int)rect.width, (int)rect.height, 0);
+            SetWindowPos(hWnd, HWND_TOPMOST, rect.x, rect.y, rect.width, rect.height, 0);
         }
         else      //pois
         {

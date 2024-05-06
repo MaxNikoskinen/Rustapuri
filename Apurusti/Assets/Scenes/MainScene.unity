@@ -2051,6 +2051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 454215457}
   - component: {fileID: 454215458}
+  - component: {fileID: 454215459}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -2327,6 +2328,30 @@ MonoBehaviour:
     RecycledHQMetal: 0
     RecycledRope: 0
     RecycledFabric: 15
+--- !u!114 &454215459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454215456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f00c650c15f3b4890c5297b486fe1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleKey: 282
+  openOnStart: 0
+  shakeToOpen: 0
+  shakeRequiresTouch: 0
+  shakeAcceleration: 3
+  toggleThresholdSeconds: 0.5
+  restrictLogCount: 0
+  maxLogCount: 1000
+  collapseLogOnStart: 0
+  logFontSize: 12
+  scaleFactor: 1
+  skin: {fileID: 0}
 --- !u!1 &496622703
 GameObject:
   m_ObjectHideFlags: 0
