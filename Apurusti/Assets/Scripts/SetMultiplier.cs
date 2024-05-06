@@ -137,7 +137,7 @@ public class SetMultiplier : MonoBehaviour
         {
             outValueFromNewInput = 0.01f;
         }
-        else if(outValueFromNewInput > 100)
+        else if(outValueFromNewInput > 50)
         {
             outValueFromNewInput = 50.00f;
         }
