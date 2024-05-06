@@ -17,12 +17,13 @@ public class SettingAlwaysOnTop : MonoBehaviour
     static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
 
     static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
+    static readonly IntPtr HWND_NOTOPMOST = new IntPtr(-2);
 
     [SerializeField] private Toggle settingToggle;
 
     public void ChangeToggle(bool value)
     {
-        #if UNITY_EDITOR
+        #if !UNITY_EDITOR
         IntPtr hWnd = GetActiveWindow();
 
         if(value) //päällä
@@ -35,7 +36,11 @@ public class SettingAlwaysOnTop : MonoBehaviour
         }
         else      //pois
         {
-            // ??????
+            RectInt rect = new RectInt();
+            GetWindowRect(hWnd, ref rect);
+            rect.width = rect.width - rect.x;
+            rect.height = rect.height - rect.y;
+            SetWindowPos(hWnd, HWND_NOTOPMOST, rect.x, rect.y, rect.width, rect.height, 0);
         }
         #endif
     }
