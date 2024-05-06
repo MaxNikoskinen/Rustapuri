@@ -22,19 +22,20 @@ public class SettingAlwaysOnTop : MonoBehaviour
 
     public void ChangeToggle(bool value)
     {
-        #if !UNITY_EDITOR
+        #if UNITY_EDITOR
         IntPtr hWnd = GetActiveWindow();
 
         if(value) //päällä
         {
             RectInt rect = new RectInt();
             GetWindowRect(hWnd, ref rect);
-            Debug.Log($"x:{rect.x} y:{rect.y} h:{rect.width} w:{rect.height}");
+            rect.width = rect.width - rect.x;
+            rect.height = rect.height - rect.y;
             SetWindowPos(hWnd, HWND_TOPMOST, rect.x, rect.y, rect.width, rect.height, 0);
         }
         else      //pois
         {
-            
+            // ??????
         }
         #endif
     }
