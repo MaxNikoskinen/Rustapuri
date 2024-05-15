@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.gameworkstore.googleprotobufunity": {
+      "version": "https://github.com/GameWorkstore/google-protobuf-unity.git#3.15.2012",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "655ece78bda22e0aa28593d8dddccbca6de719bb"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
