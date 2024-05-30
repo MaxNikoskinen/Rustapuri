@@ -35,7 +35,7 @@ public class Start
         System.Threading.Tasks.Task.Run(AsyncSkip);
         #endif
 
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = PlayerPrefs.GetInt("FPS", 30);
     }
 
     private static void AsyncSkip()
