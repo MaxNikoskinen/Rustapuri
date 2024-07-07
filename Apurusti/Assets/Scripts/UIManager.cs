@@ -163,42 +163,64 @@ public class UIManager : Singleton<UIManager>
     private void MouseEnterMethod(GameManager.ItemData data)
     {
         guideHintText.SetActive(false);
+
+        int hoverRecycledFabric = 0;
         if(data.RecycledFabric > 0)
         {
-            recyclerGuides["Kangas"].SetActive(true);
             if(data.DontMultiplyResult)
             {
-                recyclerGuides["Kangas"].GetComponentInChildren<TMP_Text>(true).text = data.RecycledFabric.ToString();
+                hoverRecycledFabric = data.RecycledFabric;
             }
             else
             {
-                recyclerGuides["Kangas"].GetComponentInChildren<TMP_Text>(true).text = Mathf.Ceil(data.RecycledFabric * GameManager.Instance.resultMultiplier).ToString();
-            }           
+                hoverRecycledFabric = (int)Mathf.Floor(data.RecycledFabric * GameManager.Instance.resultMultiplier);
+            }       
+
+            if(hoverRecycledFabric != 0)
+            {
+                recyclerGuides["Kangas"].SetActive(true);   
+                recyclerGuides["Kangas"].GetComponentInChildren<TMP_Text>(true).text = hoverRecycledFabric.ToString();
+            }
         }
+
+        int hoverRecycledFrags = 0;
         if(data.RecycledFrags > 0)
         {
-            recyclerGuides["Metallinpalasia"].SetActive(true);
             if(data.DontMultiplyResult)
             {
-                recyclerGuides["Metallinpalasia"].GetComponentInChildren<TMP_Text>(true).text = data.RecycledFrags.ToString();
+                hoverRecycledFrags = data.RecycledFrags;
             }
             else
             {
-                recyclerGuides["Metallinpalasia"].GetComponentInChildren<TMP_Text>(true).text = Mathf.Ceil(data.RecycledFrags * GameManager.Instance.resultMultiplier).ToString();
+                hoverRecycledFrags = (int)Mathf.Floor(data.RecycledFrags * GameManager.Instance.resultMultiplier);
+            }
+
+            if(hoverRecycledFrags != 0)
+            {
+                recyclerGuides["Metallinpalasia"].SetActive(true);
+                recyclerGuides["Metallinpalasia"].GetComponentInChildren<TMP_Text>(true).text = hoverRecycledFrags.ToString();
             }
         }
+
+        int hoverRecycledHQMetal = 0;
         if(data.RecycledHQMetal > 0)
         {
-            recyclerGuides["Korkealaatuinen metalli"].SetActive(true);
             if(data.DontMultiplyResult)
             {
-                recyclerGuides["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text = data.RecycledHQMetal.ToString();
+                hoverRecycledHQMetal = data.RecycledHQMetal;
             }
             else
             {
-                recyclerGuides["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text = Mathf.Ceil(data.RecycledHQMetal * GameManager.Instance.resultMultiplier).ToString();
+                hoverRecycledHQMetal = (int)Mathf.Floor(data.RecycledHQMetal * GameManager.Instance.resultMultiplier);
+            }
+
+            if(hoverRecycledHQMetal != 0)
+            {
+                recyclerGuides["Korkealaatuinen metalli"].SetActive(true);
+                recyclerGuides["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text = hoverRecycledHQMetal.ToString();
             }
         }
+
         if(data.RecycledRope > 0)
         {
             if(GameManager.Instance.recycleAll == true)
@@ -215,7 +237,7 @@ public class UIManager : Singleton<UIManager>
                 }
                 else
                 {
-                    recyclerGuides["Kangas"].GetComponentInChildren<TMP_Text>(true).text = (fabricNumber + Mathf.Ceil(data.RecycledRope * GameManager.Instance.resultMultiplier) * Mathf.Ceil(15 * GameManager.Instance.resultMultiplier)).ToString();
+                    recyclerGuides["Kangas"].GetComponentInChildren<TMP_Text>(true).text = (fabricNumber + Mathf.Floor(data.RecycledRope * GameManager.Instance.resultMultiplier) * Mathf.Floor(15 * GameManager.Instance.resultMultiplier)).ToString();
                 }
             }
             else
@@ -227,22 +249,30 @@ public class UIManager : Singleton<UIManager>
                 }
                 else
                 {
-                    recyclerGuides["Köysi"].GetComponentInChildren<TMP_Text>(true).text = Mathf.Ceil(data.RecycledRope * GameManager.Instance.resultMultiplier).ToString();
+                    recyclerGuides["Köysi"].GetComponentInChildren<TMP_Text>(true).text = Mathf.Floor(data.RecycledRope * GameManager.Instance.resultMultiplier).ToString();
                 }
             }
         }
+
+        int hoverRecycledScrap = 0;
         if(data.RecycledScrap > 0)
         {
-            recyclerGuides["Romu"].SetActive(true);
             if(data.DontMultiplyResult)
             {
-                recyclerGuides["Romu"].GetComponentInChildren<TMP_Text>(true).text = data.RecycledScrap.ToString();
+                hoverRecycledScrap = data.RecycledScrap;
             }
             else
             {
-                recyclerGuides["Romu"].GetComponentInChildren<TMP_Text>(true).text = Mathf.Ceil(data.RecycledScrap * GameManager.Instance.resultMultiplier).ToString();
+                hoverRecycledScrap = (int)Mathf.Floor(data.RecycledScrap * GameManager.Instance.resultMultiplier);
+            }
+
+            if(hoverRecycledScrap != 0)
+            {
+                recyclerGuides["Romu"].SetActive(true);
+                recyclerGuides["Romu"].GetComponentInChildren<TMP_Text>(true).text = hoverRecycledScrap.ToString();
             }
         }
+        
         if(data.RecycledTechTrash > 0)
         {
             if(GameManager.Instance.recycleAll == true)
@@ -267,8 +297,8 @@ public class UIManager : Singleton<UIManager>
                 }
                 else
                 {
-                    recyclerGuides["Romu"].GetComponentInChildren<TMP_Text>(true).text = (scrapNumber + Mathf.Ceil(data.RecycledTechTrash * GameManager.Instance.resultMultiplier) * Mathf.Ceil(20 * GameManager.Instance.resultMultiplier)).ToString();
-                    recyclerGuides["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text = (hqMetalNumber + Mathf.Ceil(data.RecycledTechTrash * GameManager.Instance.resultMultiplier) * Mathf.Ceil(1 * GameManager.Instance.resultMultiplier)).ToString();
+                    recyclerGuides["Romu"].GetComponentInChildren<TMP_Text>(true).text = (scrapNumber + Mathf.Floor(data.RecycledTechTrash * GameManager.Instance.resultMultiplier) * Mathf.Floor(20 * GameManager.Instance.resultMultiplier)).ToString();
+                    recyclerGuides["Korkealaatuinen metalli"].GetComponentInChildren<TMP_Text>(true).text = (hqMetalNumber + Mathf.Floor(data.RecycledTechTrash * GameManager.Instance.resultMultiplier) * Mathf.Floor(1 * GameManager.Instance.resultMultiplier)).ToString();
                 }
             }
             else
@@ -280,7 +310,7 @@ public class UIManager : Singleton<UIManager>
                 }
                 else
                 {
-                    recyclerGuides["Tekniikkaromu"].GetComponentInChildren<TMP_Text>(true).text = Mathf.Ceil(data.RecycledTechTrash * GameManager.Instance.resultMultiplier).ToString();
+                    recyclerGuides["Tekniikkaromu"].GetComponentInChildren<TMP_Text>(true).text = Mathf.Floor(data.RecycledTechTrash * GameManager.Instance.resultMultiplier).ToString();
                 }
             }
         }
@@ -335,26 +365,26 @@ public class UIManager : Singleton<UIManager>
                         }
                         else
                         {
-                            resultFabric += GameManager.Instance.recyclerItems[key] * Mathf.Ceil(data.RecycledFabric * GameManager.Instance.resultMultiplier);
-                            resultFrags += GameManager.Instance.recyclerItems[key] * Mathf.Ceil(data.RecycledFrags * GameManager.Instance.resultMultiplier);
-                            resultHQMetal += GameManager.Instance.recyclerItems[key] * Mathf.Ceil(data.RecycledHQMetal * GameManager.Instance.resultMultiplier);
+                            resultFabric += GameManager.Instance.recyclerItems[key] * Mathf.Floor(data.RecycledFabric * GameManager.Instance.resultMultiplier);
+                            resultFrags += GameManager.Instance.recyclerItems[key] * Mathf.Floor(data.RecycledFrags * GameManager.Instance.resultMultiplier);
+                            resultHQMetal += GameManager.Instance.recyclerItems[key] * Mathf.Floor(data.RecycledHQMetal * GameManager.Instance.resultMultiplier);
                             if(GameManager.Instance.recycleAll)
                             {
-                                resultFabric += GameManager.Instance.recyclerItems[key] * Mathf.Ceil(data.RecycledRope * GameManager.Instance.resultMultiplier) * Mathf.Ceil(15 * GameManager.Instance.resultMultiplier);
+                                resultFabric += GameManager.Instance.recyclerItems[key] * Mathf.Floor(data.RecycledRope * GameManager.Instance.resultMultiplier) * Mathf.Floor(15 * GameManager.Instance.resultMultiplier);
                             }
                             else
                             {
-                                resultRope += GameManager.Instance.recyclerItems[key] * Mathf.Ceil(data.RecycledRope * GameManager.Instance.resultMultiplier);
+                                resultRope += GameManager.Instance.recyclerItems[key] * Mathf.Floor(data.RecycledRope * GameManager.Instance.resultMultiplier);
                             }
-                            resultScrap += GameManager.Instance.recyclerItems[key] * Mathf.Ceil(data.RecycledScrap * GameManager.Instance.resultMultiplier);
+                            resultScrap += GameManager.Instance.recyclerItems[key] * Mathf.Floor(data.RecycledScrap * GameManager.Instance.resultMultiplier);
                             if(GameManager.Instance.recycleAll)
                             {
-                                resultScrap += GameManager.Instance.recyclerItems[key] * Mathf.Ceil(data.RecycledTechTrash * GameManager.Instance.resultMultiplier) * Mathf.Ceil(20 * GameManager.Instance.resultMultiplier);
-                                resultHQMetal += GameManager.Instance.recyclerItems[key] * Mathf.Ceil(data.RecycledTechTrash * GameManager.Instance.resultMultiplier) * Mathf.Ceil(1 * GameManager.Instance.resultMultiplier);
+                                resultScrap += GameManager.Instance.recyclerItems[key] * Mathf.Floor(data.RecycledTechTrash * GameManager.Instance.resultMultiplier) * Mathf.Floor(20 * GameManager.Instance.resultMultiplier);
+                                resultHQMetal += GameManager.Instance.recyclerItems[key] * Mathf.Floor(data.RecycledTechTrash * GameManager.Instance.resultMultiplier) * Mathf.Floor(1 * GameManager.Instance.resultMultiplier);
                             }
                             else
                             {
-                                resultTechTrash += GameManager.Instance.recyclerItems[key] * Mathf.Ceil(data.RecycledTechTrash * GameManager.Instance.resultMultiplier);
+                                resultTechTrash += GameManager.Instance.recyclerItems[key] * Mathf.Floor(data.RecycledTechTrash * GameManager.Instance.resultMultiplier);
                             }
                         }
                     }
